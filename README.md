@@ -23,3 +23,5 @@ Which country has the lowest risk for heart attack risk prevention
 
 * Analyze the coefficients or feature importance scores from the model to understand which features contribute significantly to the prediction. This can provide insights into the key risk factors identified by the model.
 
+## Definition of risk - 
+##  Logistic regression or classification

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Prediction</title>
+</head>
+<body>
+    <h1>Heart Attack Prediction</h1>
+    <form action="/predict" method="post" onsubmit="return validateForm()">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="sex">Sex:</label>
+        <select id="sex" name="sex" required>
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select><br><br>
+
+        <label for="cholesterol">Cholesterol Level (Range: 100 - 300 mg/dL):</label>
+        <input type="number" id="cholesterol" name="cholesterol" required min="100" max="300"><br><br>
+
+        <label for="heart_rate">Heart Rate (Range: 40 - 200 bpm):</label>
+        <input type="number" id="heart_rate" name="heart_rate" required min="40" max="200"><br><br>
+
+        <label for="diabetes">Diabetes (0 for no, 1 for yes):</label>
+        <select id="diabetes" name="diabetes" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="family_history">Family History (0 for no, 1 for yes):</label>
+        <select id="family_history" name="family_history" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="smoking">Smoking (0 for no, 1 for yes):</label>
+        <select id="smoking" name="smoking" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="obesity">Obesity (0 for no, 1 for yes):</label>
+        <select id="obesity" name="obesity" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="alcohol_consumption">Alcohol Consumption (0 for low, 1 for moderate, 2 for high):</label>
+        <select id="alcohol_consumption" name="alcohol_consumption" required>
+            <option value="0">Low</option>
+            <option value="1">Moderate</option>
+            <option value="2">High</option>
+        </select><br><br>
+
+        <label for="previous_heart_problems">Previous Heart Problems (0 for no, 1 for yes):</label>
+        <select id="previous_heart_problems" name="previous_heart_problems" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="medication_use">Medication Use (0 for no, 1 for yes):</label>
+        <select id="medication_use" name="medication_use" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="bmi">BMI (Range: 18 - 40):</label>
+        <input type="number" id="bmi" name="bmi" required min="18" max="40"><br><br>
+
+        <label for="triglycerides">Triglycerides Level (Range: 31 - 800 mg/dL):</label>
+        <input type="number" id="triglycerides" name="triglycerides" required min="31" max="800"><br><br>
+
+        <label for="systolic_pressure">Systolic Pressure (Range: 90 - 180 mmHg):</label>
+        <input type="number" id="systolic_pressure" name="systolic_pressure" required min="90" max="180"><br><br>
+
+        <label for="diastolic_pressure">Diastolic Pressure (Range: 60 - 110 mmHg):</label>
+        <input type="number" id="diastolic_pressure" name="diastolic_pressure" required min="60" max="110"><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    <script src="{{ url_for('static', filename='heart_attack.js') }}"></script>
+</body>
+</html>

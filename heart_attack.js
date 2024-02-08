@@ -17,7 +17,7 @@ function validateForm() {
   var diastolicPressure = document.getElementById("diastolic_pressure").value;
 
   // Perform validation for age
-  if (age < 0 || age > 150 || isNaN(age)) {
+  if (age < 0 || age > 130 || isNaN(age)) {
       alert("Please enter a valid age.");
       return false; // Prevent form submission
   }

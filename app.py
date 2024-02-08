@@ -7,12 +7,78 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LogisticRegression
 
+# Psycopg2 is a popular PostgreSQL adapter for the Python programming language. It allows Python code to interact with PostgreSQL databases. 
+import psycopg2
+from psycopg2 import sql
+
+
 # Initialize Flask application
 app = Flask(__name__)
 
+#############START  POSTGRES CONNECTION ########################
+#Info for the connection wiht postgres SQL in RDS
+PGEND_POINT = 'database-1.cfwmkaw8o6bp.us-east-1.rds.amazonaws.com' #End Point
+PGDATABASE_NAME ='heart_attack_prediction_db' #data base name 
+PGUSER_NAME = 'postgres'
+PGPASSWORD = 'B00TC4MP'
+#Defining functions for connection and close connection
+
+def connect():
+    conn_string = f"host={PGEND_POINT} port=5432 dbname={PGDATABASE_NAME} user={PGUSER_NAME} password={PGPASSWORD}"
+    conn = psycopg2.connect(conn_string)
+    print("Connected!")
+    
+    #Create a cursor object
+    cursor = conn.cursor()
+    
+    return conn, cursor
+
+#Close connection function definition
+def close_connection(conn, cursor):
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print("Connection closed.")
+
+conn, cursor = connect()
+
+
+#SQL SELECT statement that retrieves all columns (*) from the table named heartattackprediction.
+query_hat_all = sql.SQL("""
+SELECT * FROM encodedtable;
+""")
+#Preparation of the database cursor to execute the SQL query specified by query_hat_all. 
+#Once the query is executed, the cursor will hold the result set (if any) 
+#returned by the database server.
+cur = conn.cursor()
+cur.execute(query_hat_all)
+
+#put all the data in heartattackprediction table into a data frame in pandas all the columns name appear
+encoded_df = pd.DataFrame(cur.fetchall(), columns=['Age', 'Sex', 'Cholesterol', 'Heart Rate', 'Diabetes', 'Family History',
+       'Smoking', 'Obesity', 'Alcohol Consumption', 'Exercise Hours Per Week',
+       'Previous Heart Problems', 'Medication Use', 'Stress Level',
+       'Sedentary Hours Per Day', 'Income', 'BMI', 'Triglycerides',
+       'Physical Activity Days Per Week', 'Sleep Hours Per Day', 'Hemisphere',
+       'Heart Attack Risk', 'Systolic Pressure', 'Diastolic Pressure',
+       'Country_Argentina', 'Country_Australia', 'Country_Brazil',
+       'Country_Canada', 'Country_China', 'Country_Colombia', 'Country_France',
+       'Country_Germany', 'Country_India', 'Country_Italy', 'Country_Japan',
+       'Country_New Zealand', 'Country_Nigeria', 'Country_South Africa',
+       'Country_South Korea', 'Country_Spain', 'Country_Thailand',
+       'Country_United Kingdom', 'Country_United States', 'Country_Vietnam',
+       'Continent_Africa', 'Continent_Asia', 'Continent_Australia',
+       'Continent_Europe', 'Continent_North America',
+       'Continent_South America', 'Diet_Average', 'Diet_Healthy',
+       'Diet_Unhealthy'])
+
+
+# Call this function when you're done with your database operations
+close_connection(conn, cursor)
+############END POSTGRES CONNECTION ############
+
 # Load the trained model and scaler
 # Load the data
-encoded_df = pd.read_json("https://aws-project-4.s3.ca-central-1.amazonaws.com/encoded_df.json")
+#encoded_df = pd.read_json("https://aws-project-4.s3.ca-central-1.amazonaws.com/encoded_df.json")
 
 # Separate features and target variable
 X = encoded_df.drop(['Exercise Hours Per Week',

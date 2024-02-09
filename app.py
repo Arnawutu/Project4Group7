@@ -45,7 +45,7 @@ conn, cursor = connect()
 
 #SQL SELECT statement that retrieves all columns (*) from the table named heartattackprediction.
 query_hat_all = sql.SQL("""
-SELECT * FROM encodedtable;
+SELECT * FROM encodedtable2;
 """)
 #Preparation of the database cursor to execute the SQL query specified by query_hat_all. 
 #Once the query is executed, the cursor will hold the result set (if any) 

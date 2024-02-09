@@ -18,39 +18,21 @@ CREATE TABLE encodedtable (
     Triglycerides INTEGER,
     PhysicalActivityDaysPerWeek INTEGER,
     SleepHoursPerDay INTEGER,
+	Continent VARCHAR(255),
     Hemisphere INTEGER,
 	HeartAttackRisk INTEGER,
 	SystolicPressure INTEGER, 
     DiastolicPressure INTEGER,
-    Country_Argentina INTEGER, 
-    Country_Australia INTEGER, 
-    Country_Brazil INTEGER,
-    Country_Canada INTEGER, 
-    Country_China INTEGER, 
-    Country_Colombia INTEGER, 
-    Country_France INTEGER,
-    Country_Germany INTEGER, 
-    Country_India INTEGER, 
-    Country_Italy INTEGER, 
-    Country_Japan INTEGER,
-    Country_New_Zealand INTEGER, 
-    Country_Nigeria INTEGER, 
-    Country_South_Africa INTEGER,
-    Country_South_Korea INTEGER, 
-    Country_Spain INTEGER, 
-    Country_Thailand INTEGER,
-    Country_United_Kingdom INTEGER, 
-    Country_United_States INTEGER, 
-    Country_Vietnam INTEGER,
-    Continent_Africa INTEGER, 
-    Continent_Asia INTEGER, 
-    Continent_Australia INTEGER,
-    Continent_Europe INTEGER, 
-    Continent_North_America INTEGER,
-    Continent_South_America INTEGER, 
+    lat REAL,
+	long REAL,
     Diet_Average INTEGER, 
     Diet_Healthy INTEGER,
     Diet_Unhealthy INTEGER
 );
+
+       
+
+
+
 
 SELECT * FROM encodedtable;

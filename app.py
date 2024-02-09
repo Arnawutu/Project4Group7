@@ -54,22 +54,14 @@ cur = conn.cursor()
 cur.execute(query_hat_all)
 
 #put all the data in heartattackprediction table into a data frame in pandas all the columns name appear
-encoded_df = pd.DataFrame(cur.fetchall(), columns=['Age', 'Sex', 'Cholesterol', 'Heart Rate', 'Diabetes', 'Family History',
-       'Smoking', 'Obesity', 'Alcohol Consumption', 'Exercise Hours Per Week',
+encoded_df = pd.DataFrame(cur.fetchall(), columns=['Patient ID','Country', 'Capital','Age', 'Sex', 'Cholesterol',
+       'Heart Rate', 'Diabetes', 'Family History', 'Smoking', 'Obesity',
+       'Alcohol Consumption', 'Exercise Hours Per Week', 
        'Previous Heart Problems', 'Medication Use', 'Stress Level',
        'Sedentary Hours Per Day', 'Income', 'BMI', 'Triglycerides',
-       'Physical Activity Days Per Week', 'Sleep Hours Per Day', 'Hemisphere',
-       'Heart Attack Risk', 'Systolic Pressure', 'Diastolic Pressure',
-       'Country_Argentina', 'Country_Australia', 'Country_Brazil',
-       'Country_Canada', 'Country_China', 'Country_Colombia', 'Country_France',
-       'Country_Germany', 'Country_India', 'Country_Italy', 'Country_Japan',
-       'Country_New Zealand', 'Country_Nigeria', 'Country_South Africa',
-       'Country_South Korea', 'Country_Spain', 'Country_Thailand',
-       'Country_United Kingdom', 'Country_United States', 'Country_Vietnam',
-       'Continent_Africa', 'Continent_Asia', 'Continent_Australia',
-       'Continent_Europe', 'Continent_North America',
-       'Continent_South America', 'Diet_Average', 'Diet_Healthy',
-       'Diet_Unhealthy'])
+       'Physical Activity Days Per Week', 'Sleep Hours Per Day', 'Continent',
+       'Hemisphere', 'Heart Attack Risk', 'Systolic Pressure',
+       'Diastolic Pressure', 'lat', 'long','Diet_Average','Diet_Healthy','Diet_Unhealthy'])
 
 
 # Call this function when you're done with your database operations
@@ -82,20 +74,22 @@ close_connection(conn, cursor)
 
 # Separate features and target variable
 X = encoded_df.drop(['Exercise Hours Per Week',
-     'Stress Level',
-       'Sedentary Hours Per Day', 'Income', 
-       'Physical Activity Days Per Week', 'Sleep Hours Per Day', 'Hemisphere',
-       'Heart Attack Risk',
-       'Country_Argentina', 'Country_Australia', 'Country_Brazil',
-       'Country_Canada', 'Country_China', 'Country_Colombia', 'Country_France',
-       'Country_Germany', 'Country_India', 'Country_Italy', 'Country_Japan',
-       'Country_New Zealand', 'Country_Nigeria', 'Country_South Africa',
-       'Country_South Korea', 'Country_Spain', 'Country_Thailand',
-       'Country_United Kingdom', 'Country_United States', 'Country_Vietnam',
-       'Continent_Africa', 'Continent_Asia', 'Continent_Australia',
-       'Continent_Europe', 'Continent_North America',
-       'Continent_South America', 'Diet_Average', 'Diet_Healthy',
-       'Diet_Unhealthy'], axis=1)
+                     'Stress Level',
+                     'Sedentary Hours Per Day',
+                     'Income',
+                     'Physical Activity Days Per Week',
+                     'Sleep Hours Per Day',
+                     'Heart Attack Risk',
+                     'Diet_Average',
+                     'Diet_Healthy',
+                     'Diet_Unhealthy',
+                     'Country',
+                     'Capital',
+                     'lat',
+                     'long',
+                     'Continent',
+                     'Patient ID',
+                     'Hemisphere'], axis=1)
 y = encoded_df['Heart Attack Risk']
 
 # Split the data into training and testing sets

@@ -29,19 +29,17 @@ Our project seeks to examine the data outlined above to help insurance companies
 #### Questions
 - Health Risk assessment
   - Question: Based on the available data, how effectively does the model capture and estimate an individual's likelihood of experiencing a heart attack?
-  - Question: Which feature in our dataset impacts the possibility of a heart attack?
-  - Question: What is the distribution of the heart attack risk in the data set?
+  - Question: Which feature in our dataset impacts the possibility of a heart attack the most?
 
 - Fairness and Bias:
   - Question: How does the analysis account for fairness and avoid bias in predicting heart attack risks across different demographic groups?
-  - Question: What is the gender distribution of the heart attack risk in the data set?
-  - Question: What is the distribution by country of heart attack risk?
+  - Question: What is the age distribution of the heart attack risk in the data set?
+  - Question: What is the distribution by country and continent of heart attack risk?
 
 - Impact of Lifestyle Factors on Risk Assessment:
-  - Question: What is the relative contribution of lifestyle factors (e.g., smoking, obesity, physical activity) versus clinical parameters (e.g., cholesterol levels, blood pressure) in predicting heart attack risk?
-  - Question: How do different combinations of lifestyle factors and clinical markers influence the overall risk assessment for policyholders?
-  - Question: How does the amount of sleep per age influence the risk of an individual becoming susceptible to heart attack?
-  - Question: How do stress levels and income correlate with higher heart attack risk individuals?
+  - Question: What is the relative contribution of lifestyle factors (e.g., smoking, obesity, physical activity, hours of sleep) versus clinical parameters (e.g., cholesterol levels, triglycerides, blood pressure) in predicting heart attack risk?
+  - Question: How does the amount of sleep and physical activity influence the risk of an individual becoming susceptible to heart attack?
+  - Question: How does triglycerides and cholesterol levels impact the risk of heart attack at a continental scale? 
 
 #### Code Structure
 

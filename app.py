@@ -96,6 +96,29 @@ best_rf_model.fit(X_train_scaled, y_train)
 def home():
     return render_template('heart_attack.html')
 
+# Define a route for the map
+@app.route('/cholesterol_triglycerides_map')
+def cholesterol_triglycerides_map():
+    # Assuming heart_trichol is a DataFrame with the required data
+    heart_trichol = pd.read_csv("path/to/heart_trichol.csv")  # Replace with the actual path
+
+    my_map = folium.Map(location=[27.2546, 33.8116], zoom_start=2.3)
+
+    # Add markers for each city with popup showing cholesterol and triglycerides information
+    for city, lat in heart_trichol['lat'].items():
+        long = heart_trichol['long'][city]
+        cholesterol = heart_trichol['Cholesterol'][city]
+        triglycerides = heart_trichol['Triglycerides'][city]
+
+        popup_content = f'<b>{city}</b><br>Cholesterol: {cholesterol}<br>Triglycerides: {triglycerides}'
+        folium.Marker(location=[lat, long], popup=popup_content).add_to(my_map)
+
+    # Save the map to an HTML file
+    map_filename = "static/cholesterol_triglycerides_map.html"  # Adjust the path as needed
+    my_map.save(map_filename)
+
+    # Render the template with the map
+    return render_template('cholesterol_triglycerides_map.html', map_filename=map_filename)
 
 # Define a route for prediction
 @app.route('/predict', methods=['POST'])

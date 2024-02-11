@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
+    <link rel="stylesheet" type="text/css" href="../static/styles/style.css">
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
@@ -37,10 +37,17 @@
         
 </head>
 <body>
+    <header>
+        <h1>Heart Attack Risk Map Distribution</h1>
+             <nav>
+                <ul>
+                    <li><a href="/"> Return to Heart Attack Risk application</a></li>
+                </ul>
+            </nav>
+    </header>
     
-    
+    <form action="/visuals" method="post" onsubmit="return validateForm()"></form>
             <div class="folium-map" id="map_cf31cf39cdbdf8964e97a5868a89e35e" ></div>
-        
 </body>
 <script>
     

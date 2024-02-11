@@ -147,7 +147,7 @@ def index():
     world_map.save(map_file_path)
 
     # Render the template with the map
-    return render_template('index.html', map_file_path=map_file_path)
+    return render_template('layer_map.html', map_file_path=map_file_path)
 
 # Define a route for prediction
 @app.route('/predict', methods=['POST'])

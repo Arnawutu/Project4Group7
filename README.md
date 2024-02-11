@@ -7,7 +7,7 @@
 - Alexandru Arnautu
 
 ## Overview
-This repository integrates two data sources for Heart Attack Prediction through machine learning and visualization analysis. It encompasses a Flask-based web application for predicting heart attack risk by leveraging essential features and a data processing script employing Postgres SQL in Amazon RDS. Additionally, Spark is utilized for data cleaning and preparation, while data visualization and analysis are facilitated through Plotly and Folium.
+Our repository combines two data sources and API Coordinates to predict heart attack risk using machine learning and visualization analysis. It features a Flask-based web application for risk prediction, a data processing script using Postgresql in Amazon RDS, and employs Spark for data cleaning and preparation. We employed data Plotly, Pandas and Folium for visualization and analysis.
  
 ### Objective 
 This project focuses on using a dataset to create a predictive model for assessing an individual's risk of having a heart attack. It aims to understand how specific  lifestyle factors influence the probability of heart risk
@@ -25,6 +25,21 @@ This project focuses on using a dataset to create a predictive model for assessi
 
 Our project seeks to examine the data outlined above to help insurance companies provide  more detail specific health programs for patients affected by heart risk, by looking at related factors. A critical aspect of the project is ensuring fairness and reducing bias in predictions across different demographic groups, and instead focused on creating a global pattern rather than continent/country specific ones. Our goals throughout the making of this analysis, was to focus on  improving risk assessment accuracy through supervised machine learning to support informed decision-making in heart attack risk evaluation.
 
+
+#### Questions
+- Health Risk assessment
+  - Question: Based on the available data, how effectively does the model capture and estimate an individual's likelihood of experiencing a heart attack?
+  - Question: Which feature in our dataset impacts the possibility of a heart attack the most?
+
+- Fairness and Bias:
+  - Question: How does the analysis account for fairness and avoid bias in predicting heart attack risks across different demographic groups?
+  - Question: What is the age distribution of the heart attack risk in the data set?
+  - Question: What is the distribution by country and continent of heart attack risk?
+
+- Impact of Lifestyle Factors on Risk Assessment:
+  - Question: What is the relative contribution of lifestyle factors (e.g., smoking, obesity, physical activity, hours of sleep) versus clinical parameters (e.g., cholesterol levels, triglycerides, blood pressure) in predicting heart attack risk?
+  - Question: How does the amount of sleep and physical activity influence the risk of an individual becoming susceptible to heart attack?
+  - Question: How does triglycerides and cholesterol levels impact the risk of heart attack at a continental scale? 
 
 #### Code Structure
 

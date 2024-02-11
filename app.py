@@ -91,34 +91,52 @@ best_rf_model = RandomForestClassifier(max_depth=30, min_samples_leaf=4, min_sam
                                         random_state=42)
 best_rf_model.fit(X_train_scaled, y_train)
 
-# Define the route for the home page
-@app.route('/')
-def home():
-    return render_template('heart_attack.html')
+@app.route('/visuals')
+def index():
+    # Get all countries
+    all_countries = list(heart_trichol['lat'].keys())
 
-# Define a route for the map
-@app.route('/cholesterol_triglycerides_map')
-def cholesterol_triglycerides_map():
-    # Assuming heart_trichol is a DataFrame with the required data
-    heart_trichol = pd.read_csv("path/to/heart_trichol.csv")  # Replace with the actual path
+    # Create a base map centered on the world
+    world_map = folium.Map(location=[0, 0], zoom_start=2)
 
-    my_map = folium.Map(location=[27.2546, 33.8116], zoom_start=2.3)
+    # Create a feature group for top triglycerides layer
+    triglycerides_layer = folium.FeatureGroup(name='Top 3 Triglycerides')
 
-    # Add markers for each city with popup showing cholesterol and triglycerides information
-    for city, lat in heart_trichol['lat'].items():
-        long = heart_trichol['long'][city]
-        cholesterol = heart_trichol['Cholesterol'][city]
-        triglycerides = heart_trichol['Triglycerides'][city]
+    for city, value in sorted(heart_trichol['Triglycerides'].items(), key=lambda x: x[1], reverse=True)[:3]:
+        folium.Marker(location=[heart_trichol['lat'][city], heart_trichol['long'][city]],
+                    popup=f'Triglycerides: {value}',
+                    icon=folium.Icon(color='blue')).add_to(triglycerides_layer)
 
-        popup_content = f'<b>{city}</b><br>Cholesterol: {cholesterol}<br>Triglycerides: {triglycerides}'
-        folium.Marker(location=[lat, long], popup=popup_content).add_to(my_map)
+    # Create a feature group for top cholesterol layer
+    cholesterol_layer = folium.FeatureGroup(name='Top 3 Cholesterol')
 
-    # Save the map to an HTML file
-    map_filename = "static/cholesterol_triglycerides_map.html"  # Adjust the path as needed
-    my_map.save(map_filename)
+    for city, value in sorted(heart_trichol['Cholesterol'].items(), key=lambda x: x[1], reverse=True)[:3]:
+        folium.Marker(location=[heart_trichol['lat'][city], heart_trichol['long'][city]],
+                    popup=f'Cholesterol: {value}',
+                    icon=folium.Icon(color='red')).add_to(cholesterol_layer)
+
+    # Create a feature group for all countries layer
+    all_countries_layer = folium.FeatureGroup(name='All Countries')
+
+    for city in all_countries:
+        folium.Marker(location=[heart_trichol['lat'][city], heart_trichol['long'][city]],
+                    popup=f'Triglycerides: {heart_trichol["Triglycerides"].get(city, "N/A")}, Cholesterol: {heart_trichol["Cholesterol"].get(city, "N/A")}',
+                    icon=folium.Icon(color='green')).add_to(all_countries_layer)
+
+    # Add layers to the map
+    triglycerides_layer.add_to(world_map)
+    cholesterol_layer.add_to(world_map)
+    all_countries_layer.add_to(world_map)
+
+    # Add layer control
+    folium.LayerControl().add_to(world_map)
+
+    # Save the map to a temporary file
+    map_file_path = 'templates/map.html'
+    world_map.save(map_file_path)
 
     # Render the template with the map
-    return render_template('cholesterol_triglycerides_map.html', map_filename=map_filename)
+    return render_template('index.html', map_file_path=map_file_path)
 
 # Define a route for prediction
 @app.route('/predict', methods=['POST'])

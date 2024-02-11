@@ -10,7 +10,21 @@
 This repository integrates two data sources for Heart Attack Prediction through machine learning and visualization analysis. It encompasses a Flask-based web application for predicting heart attack risk by leveraging essential features and a data processing script employing Postgres SQL in Amazon RDS. Additionally, Spark is utilized for data cleaning and preparation, while data visualization and analysis are facilitated through Plotly and Folium.
  
 ### Objective 
-This project aims to leverage the available dataset to develop a robust predictive model that effectively captures and estimates an individual's likelihood of experiencing a heart attack. Additionally, the project aims to explore the potential impact of the data analysis on informing decisions related to adjusting insurance premiums and refining underwriting processes. An essential focus is understanding the relative contribution of lifestyle factors (such as smoking, obesity, and physical activity) compared to clinical parameters (including cholesterol levels and blood pressure) in predicting heart attack risk. Furthermore, the project addresses fairness and bias, ensuring the analysis provides equitable predictions across diverse demographic groups. The ultimate goal is to enhance the accuracy of risk assessment, contribute to informed decision-making in the insurance domain, and promote fairness and transparency in evaluating heart attack risks.
+This project focuses on using a dataset to create a predictive model for assessing an individual's risk of having a heart attack. It aims to understand how specific  lifestyle factors influence the probability of heart risk
+
+- Age
+- Blood Pressure
+- Cholesterol Levels 
+- Diabetic Status
+- Hours of Sleep
+- Medication Use
+- Obesity
+- Physical Activity 
+- Smoking 
+- Triglycerides
+
+Our project seeks to examine the data outlined above to help insurance companies provide  more detail specific health programs for patients affected by heart risk, by looking at related factors. A critical aspect of the project is ensuring fairness and reducing bias in predictions across different demographic groups, and instead focused on creating a global pattern rather than continent/country specific ones. Our goals throughout the making of this analysis, was to focus on  improving risk assessment accuracy through supervised machine learning to support informed decision-making in heart attack risk evaluation.
+
 
 #### Code Structure
 

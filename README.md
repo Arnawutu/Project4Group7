@@ -64,7 +64,14 @@ Our project seeks to examine the data outlined above to help insurance companies
 2. **results**
    - URL: [http://localhost:5000/predict](http://localhost:5000/)
    - Description: Displays the results of the heart attack application.
-3. **heart_attack_prediction_db**
+
+
+### Postgres SQL connection 
+ - **Reesources/Data_base_setup/PostgreSQL database_Amazon RDS.ipynb** This file contains the information and functions for the connections with amazon RDS porstgres SQL data base. 
+ - **Reesources/queries** This folder contains all the used queries to create the tables in the data base heart_attack_prediction_db.
+
+### Endpoint
+1. **heart_attack_prediction_db**
    - URL: [database-1.cfwmkaw8o6bp.us-east-1.rds.amazonaws.com]
    - Description: Connection to the heart attack data base in amazon RDS postgres    SQL.
 

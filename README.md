@@ -26,6 +26,23 @@ This project focuses on using a dataset to create a predictive model for assessi
 Our project seeks to examine the data outlined above to help insurance companies provide  more detail specific health programs for patients affected by heart risk, by looking at related factors. A critical aspect of the project is ensuring fairness and reducing bias in predictions across different demographic groups, and instead focused on creating a global pattern rather than continent/country specific ones. Our goals throughout the making of this analysis, was to focus on  improving risk assessment accuracy through supervised machine learning to support informed decision-making in heart attack risk evaluation.
 
 
+#### Questions
+- Health Risk assessment
+  - Question: Based on the available data, how effectively does the model capture and estimate an individual's likelihood of experiencing a heart attack?
+  - Question: Which feature in our dataset impacts the possibility of a heart attack?
+  - Question: What is the distribution of the heart attack risk in the data set?
+
+- Fairness and Bias:
+  - Question: How does the analysis account for fairness and avoid bias in predicting heart attack risks across different demographic groups?
+  - Question: What is the gender distribution of the heart attack risk in the data set?
+  - Question: What is the distribution by country of heart attack risk?
+
+- Impact of Lifestyle Factors on Risk Assessment:
+  - Question: What is the relative contribution of lifestyle factors (e.g., smoking, obesity, physical activity) versus clinical parameters (e.g., cholesterol levels, blood pressure) in predicting heart attack risk?
+  - Question: How do different combinations of lifestyle factors and clinical markers influence the overall risk assessment for policyholders?
+  - Question: How does the amount of sleep per age influence the risk of an individual becoming susceptible to heart attack?
+  - Question: How do stress levels and income correlate with higher heart attack risk individuals?
+
 #### Code Structure
 
 ### Data Preparing

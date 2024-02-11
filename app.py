@@ -2,13 +2,11 @@ from flask import Flask, render_template, request
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import confusion_matrix, classification_report
 from imblearn.over_sampling import RandomOverSampler
-import numpy as np
 import pandas as pd
 import psycopg2
 from psycopg2 import sql
+import folium
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -55,12 +53,6 @@ encoded_df = pd.DataFrame(cur.fetchall(), columns=['Patient ID', 'Country', 'Cap
                                                    'Hemisphere', 'Heart Attack Risk', 'Systolic Pressure',
                                                    'Diastolic Pressure', 'lat', 'long', 'Diet_Average', 'Diet_Healthy',
                                                    'Diet_Unhealthy'])
-heart_trichol = {
-    'Triglycerides': {'Abuja': 425.3950892857143, 'Bangkok': 429.88317757009344, 'Beijing': 413.32339449541286, 'Berlin': 416.52830188679246, 'Bogota': 405.5221445221445, 'Brasilia': 406.0, 'Buenos Aires': 419.7855626326964, 'Canberra': 419.87973273942094, 'Hanoi': 430.3270588235294, 'London': 419.6017505470459, 'Madrid': 409.66511627906976, 'New Delhi': 396.5194174757282, 'Ottawa': 406.05227272727274, 'Paris': 434.23766816143495, 'Pretoria': 417.2917647058824, 'Rome': 414.02088167053364, 'Seoul': 420.09290953545235, 'Tokyo': 426.0323325635104, 'Washington': 434.1666666666667, 'Wellington': 409.0206896551724},
-    'Cholesterol': {'Abuja': 262.20535714285717, 'Bangkok': 262.1378504672897, 'Beijing': 258.0091743119266, 'Berlin': 258.0607966457023, 'Bogota': 261.84615384615387, 'Brasilia': 257.2705627705628, 'Buenos Aires': 261.52016985138005, 'Canberra': 258.9977728285078, 'Hanoi': 264.4188235294118, 'London': 259.8336980306346, 'Madrid': 258.8558139534884, 'New Delhi': 256.08009708737865, 'Ottawa': 256.8477272727273, 'Paris': 264.9484304932735, 'Pretoria': 253.22588235294117, 'Rome': 260.6658932714617, 'Seoul': 259.6454767726161, 'Tokyo': 260.96535796766744, 'Washington': 268.85238095238094, 'Wellington': 253.34022988505748},
-    'lat': {'Abuja': 10.0, 'Bangkok': 15.0, 'Beijing': 35.0, 'Berlin': 51.0, 'Bogota': 4.0, 'Brasilia': -10.0, 'Buenos Aires': -34.0, 'Canberra': -27.0, 'Hanoi': 16.0, 'London': 54.0, 'Madrid': 40.0, 'New Delhi': 20.0, 'Ottawa': 60.0, 'Paris': 46.0, 'Pretoria': -29.0, 'Rome': 42.8333, 'Seoul': 37.0, 'Tokyo': 36.0, 'Washington': 38.0, 'Wellington': -41.0},
-    'long': {'Abuja': 8.0, 'Bangkok': 100.0, 'Beijing': 105.0, 'Berlin': 9.0, 'Bogota': -72.0, 'Brasilia': -55.0, 'Buenos Aires': -64.0, 'Canberra': 133.0, 'Hanoi': 106.0, 'London': -2.0, 'Madrid': -4.0, 'New Delhi': 77.0, 'Ottawa': -95.0, 'Paris': 2.0, 'Pretoria': 24.0, 'Rome': 12.8333, 'Seoul': 127.5, 'Tokyo': 138.0, 'Washington': -97.0, 'Wellington': 174.0}
-}
 
 close_connection(conn, cursor)
 ############ END POSTGRES CONNECTION ############
@@ -96,6 +88,19 @@ rf_model = RandomForestClassifier(random_state=42)
 best_rf_model = RandomForestClassifier(max_depth=30, min_samples_leaf=4, min_samples_split=10, n_estimators=300,
                                         random_state=42)
 best_rf_model.fit(X_train_scaled, y_train)
+
+heart_trichol = {
+    'Triglycerides': {'Abuja': 425.3950892857143, 'Bangkok': 429.88317757009344, 'Beijing': 413.32339449541286, 'Berlin': 416.52830188679246, 'Bogota': 405.5221445221445, 'Brasilia': 406.0, 'Buenos Aires': 419.7855626326964, 'Canberra': 419.87973273942094, 'Hanoi': 430.3270588235294, 'London': 419.6017505470459, 'Madrid': 409.66511627906976, 'New Delhi': 396.5194174757282, 'Ottawa': 406.05227272727274, 'Paris': 434.23766816143495, 'Pretoria': 417.2917647058824, 'Rome': 414.02088167053364, 'Seoul': 420.09290953545235, 'Tokyo': 426.0323325635104, 'Washington': 434.1666666666667, 'Wellington': 409.0206896551724},
+    'Cholesterol': {'Abuja': 262.20535714285717, 'Bangkok': 262.1378504672897, 'Beijing': 258.0091743119266, 'Berlin': 258.0607966457023, 'Bogota': 261.84615384615387, 'Brasilia': 257.2705627705628, 'Buenos Aires': 261.52016985138005, 'Canberra': 258.9977728285078, 'Hanoi': 264.4188235294118, 'London': 259.8336980306346, 'Madrid': 258.8558139534884, 'New Delhi': 256.08009708737865, 'Ottawa': 256.8477272727273, 'Paris': 264.9484304932735, 'Pretoria': 253.22588235294117, 'Rome': 260.6658932714617, 'Seoul': 259.6454767726161, 'Tokyo': 260.96535796766744, 'Washington': 268.85238095238094, 'Wellington': 253.34022988505748},
+    'lat': {'Abuja': 10.0, 'Bangkok': 15.0, 'Beijing': 35.0, 'Berlin': 51.0, 'Bogota': 4.0, 'Brasilia': -10.0, 'Buenos Aires': -34.0, 'Canberra': -27.0, 'Hanoi': 16.0, 'London': 54.0, 'Madrid': 40.0, 'New Delhi': 20.0, 'Ottawa': 60.0, 'Paris': 46.0, 'Pretoria': -29.0, 'Rome': 42.8333, 'Seoul': 37.0, 'Tokyo': 36.0, 'Washington': 38.0, 'Wellington': -41.0},
+    'long': {'Abuja': 8.0, 'Bangkok': 100.0, 'Beijing': 105.0, 'Berlin': 9.0, 'Bogota': -72.0, 'Brasilia': -55.0, 'Buenos Aires': -64.0, 'Canberra': 133.0, 'Hanoi': 106.0, 'London': -2.0, 'Madrid': -4.0, 'New Delhi': 77.0, 'Ottawa': -95.0, 'Paris': 2.0, 'Pretoria': 24.0, 'Rome': 12.8333, 'Seoul': 127.5, 'Tokyo': 138.0, 'Washington': -97.0, 'Wellington': 174.0}
+}
+
+
+# Define the route for the home page
+@app.route('/')
+def home():
+    return render_template('heart_attack.html')
 
 @app.route('/visuals')
 def index():

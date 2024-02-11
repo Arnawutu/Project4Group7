@@ -55,7 +55,7 @@ This project aims to leverage the available dataset to develop a robust predicti
 
 
 
-### Model Training with Original Data
+##### Model Training with Original Data
 
 Random Forest Classifier, K-Nearest Neighbors (KNN), and Logistic Regression models are trained using the original dataset without any resampling techniques. The steps involved are as follows:
 
@@ -67,7 +67,7 @@ Random Forest Classifier, K-Nearest Neighbors (KNN), and Logistic Regression mod
 
 4. **Model Evaluation**: After training, the performance of each model is evaluated using various metrics such as accuracy, precision, recall, F1-score, and area under the ROC curve (AUC-ROC). These metrics provide insights into how well the models are able to classify instances of heart attack risk or predict loan statuses.
 
-### Model Training with Resampled Data
+##### Model Training with Resampled Data
 
 The impact of different resampling techniques on model performance is explored for each model (Random Forest Classifier, KNN, and Logistic Regression). Resampling techniques are used to address class imbalance in the dataset, where one class (e.g., low-risk of heart attack) is significantly more prevalent than the other class (e.g., high-risk of heart attack). The resampling techniques considered are:
 
@@ -87,11 +87,11 @@ For each resampling technique, the dataset is resampled, and each model (Random 
 
 
 
-## Setup
+#### Setup
 
 Ensure that you have the necessary Python libraries installed, including Pandas, NumPy, scikit-learn, psycopg2, and imbalanced-learn. Additionally, make sure you have access to a PostgreSQL database where the heart attack prediction dataset is stored.
 
-## Instructions
+#### Instructions
 
 1. Ensure you have access to the PostgreSQL database containing the heart attack prediction dataset.
 

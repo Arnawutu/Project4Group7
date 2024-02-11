@@ -7,7 +7,7 @@
 - Alexandru Arnautu
 
 ## Overview
-This repository integrates two data sources for Heart Attack Prediction through machine learning and visualization analysis. It encompasses a Flask-based web application for predicting heart attack risk by leveraging essential features and a data processing script employing Postgres SQL in Amazon RDS. Additionally, Spark is utilized for data cleaning and preparation, while data visualization and analysis are facilitated through Plotly and Folium.
+Our repository combines two data sources and API Coordinates to predict heart attack risk using machine learning and visualization analysis. It features a Flask-based web application for risk prediction, a data processing script using Postgresql in Amazon RDS, and employs Spark for data cleaning and preparation. We employed data Plotly, Pandas and Folium for visualization and analysis.
  
 ### Objective 
 This project focuses on using a dataset to create a predictive model for assessing an individual's risk of having a heart attack. It aims to understand how specific  lifestyle factors influence the probability of heart risk

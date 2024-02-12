@@ -99,13 +99,13 @@ Random Forest Classifier, K-Nearest Neighbors (KNN), and Logistic Regression mod
 
 2. **Feature Selection**: Relevant features are selected based on their importance using techniques such as feature importance scores, recursive feature elimination, or domain knowledge. This helps improve the models' performance by focusing on the most informative features.
 
-3. **Model Training**: Each model (Random Forest Classifier, KNN, and Logistic Regression) is instantiated and trained using the preprocessed dataset. During training, the models learn patterns and relationships between the input features and the target variable (e.g., heart attack risk, loan status).
+3. **Model Training**: Each model (Random Forest Classifier, KNN, and Logistic Regression) is instantiated and trained using the preprocessed dataset. During training, the models learn patterns and relationships between the input features and the target variable (heart attack risk).
 
-4. **Model Evaluation**: After training, the performance of each model is evaluated using various metrics such as accuracy, precision, recall, F1-score, and area under the ROC curve (AUC-ROC). These metrics provide insights into how well the models are able to classify instances of heart attack risk or predict loan statuses.
+4. **Model Evaluation**: After training, the performance of each model is evaluated using various metrics such as accuracy, precision, recall, F1-score, and area under the ROC curve (AUC-ROC). These metrics provide insights into how well the models are able to classify instances of heart attack risk.
 
 #### Model Training with Resampled Data
 
-The impact of different resampling techniques on model performance is explored for each model (Random Forest Classifier, KNN, and Logistic Regression). Resampling techniques are used to address class imbalance in the dataset, where one class (e.g., low-risk of heart attack) is significantly more prevalent than the other class (e.g., high-risk of heart attack). The resampling techniques considered are:
+The impact of different resampling techniques on model performance is explored for each model (Random Forest Classifier, KNN, and Logistic Regression). Resampling techniques are used to address class imbalance in the dataset, where one class (low-risk of heart attack) is significantly more prevalent than the other class (high-risk of heart attack). The resampling techniques considered are:
 
 1. **SMOTE (Synthetic Minority Over-sampling Technique)**: Generates synthetic samples for the minority class to balance the class distribution.
 
@@ -117,23 +117,49 @@ The impact of different resampling techniques on model performance is explored f
 
 5. **ClusterCentroids**: Under-samples the majority class by clustering the data points and keeping centroids of the clusters.
 
-For each resampling technique, the dataset is resampled, and each model (Random Forest Classifier, KNN, and Logistic Regression) is trained using the resampled data. The trained models are then evaluated using the same evaluation metrics as the models trained with the original data. This allows for a comparison of how different resampling techniques affect each model's ability to predict heart attack risk or loan statuses accurately.
+For each resampling technique, the dataset is resampled, and each model (Random Forest Classifier, KNN, and Logistic Regression) is trained using the resampled data. The trained models are then evaluated using the same evaluation metrics as the models trained with the original data. This allows for a comparison of how different resampling techniques affect each model's ability to predict heart attack risk accurately.
 
 
+### Best Model: Data Resampling with RandomOverSampler, Grid Search, and RandomForestClassifier
+
+This repository contains code for building and evaluating a predictive model for heart attack risk using resampling techniques with RandomOverSampler, grid search for hyperparameter tuning, and the RandomForestClassifier algorithm. The aim is to create a robust model that accurately predicts the risk of heart attack based on various features.
+
+### Methodology
+
+#### Data Resampling
+- RandomOverSampler: To address class imbalance, the dataset is resampled using RandomOverSampler, which generates synthetic samples for the minority class to balance the class distribution.
+
+#### Data Preprocessing
+- Normalize Features: The feature matrix is normalized using MinMaxScaler after resampling to ensure consistent feature scaling.
+
+#### Model Training
+- RandomForestClassifier: The RandomForestClassifier algorithm is chosen for its ability to handle complex relationships in the data and its robustness to overfitting.
+
+#### Hyperparameter Tuning
+- Grid Search: Hyperparameters for the RandomForestClassifier are tuned using grid search with 5-fold cross-validation. The grid search explores combinations of hyperparameters such as the number of estimators, maximum depth, minimum samples split, and minimum samples leaf.
+
+#### Results
+
+The best hyperparameters found through grid search are:
+- Max Depth: 30
+- Min Samples Leaf: 4
+- Min Samples Split: 10
+- Number of Estimators: 300
+
+The model achieves a testing data score of approximately 75% and a new testing data score of approximately 73%. Confusion matrices and classification reports are provided for both testing and new testing data, showing the precision, recall, and F1-score for each class.
 
 
-
-#### Setup
+### Setup
 
 Ensure that you have the necessary Python libraries installed, including Pandas, NumPy, scikit-learn, psycopg2, and imbalanced-learn. Additionally, make sure you have access to a PostgreSQL database where the heart attack prediction dataset is stored.
 
-#### Instructions
+### Instructions
 
 1. Ensure you have access to the PostgreSQL database containing the heart attack prediction dataset.
 
 2. Install the required Python libraries mentioned in the setup section.
 
-3. Execute the code cells sequentially in your preferred Python environment (e.g., Jupyter Notebook) to perform data retrieval, preprocessing, model training, and evaluation.
+3. Execute the code cells sequentially in your preferred Python environment (e.g., Jupyter Notebook, Google Colab Notebook, Jupyter Lab on AWS:3 (Amazon SageMaker)) to perform data retrieval, preprocessing, model training, and evaluation.
 
 4. Review the results and analysis provided to understand the predictive performance of the models and make informed decisions regarding heart attack risk prediction.
 

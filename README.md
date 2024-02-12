@@ -78,11 +78,11 @@ Our project seeks to examine the data outlined above to help insurance companies
 
 ### Data Analysis and Visualization
 
-- **visuals_trial.ipynb** This file presents our response to the research questions utilizing visualizations created with the Folium library and Plotly. Through these visualizations, we offer insights and analysis to address the research question effectively.
+- **visuals_trial.ipynb** and **more_Visualization** These files present our response to the research questions utilizing visualizations created with the Folium library and Plotly. Through these visualizations, we offer insights and analysis to address the research question effectively.
 
 
 ### Data Analysis 
-**here we put the sesearchquesitons and analysis**
+**here we put the searchquesitons and analysis**
 
 
 

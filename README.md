@@ -148,6 +148,7 @@ The best hyperparameters found through grid search are:
 
 The model achieves a testing data score of approximately 75% and a new testing data score of approximately 73%. Confusion matrices and classification reports are provided for both testing and new testing data, showing the precision, recall, and F1-score for each class.
 
+![Image Alt Text](https://imgur.com/gt6xIrt)
 
 ### Setup
 

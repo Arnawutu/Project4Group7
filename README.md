@@ -176,5 +176,11 @@ Ensure that you have the necessary Python libraries installed, including Pandas,
 4. Review the results and analysis provided to understand the predictive performance of the models and make informed decisions regarding heart attack risk prediction.
 
 
+### Data Sources
 
+**Heart Attack Risk Prediction Dataset**
+- URL[https://www.kaggle.com/datasets/iamsouravbanerjee/heart-attack-prediction-dataset](https://www.kaggle.com/datasets/iamsouravbanerjee/heart-attack-prediction-dataset)
+
+**Contries Now API**
+- URL [https://countriesnow.space/api/v0.1/countries/capital] (https://countriesnow.space/api/v0.1/countries/capital)
 

@@ -107,11 +107,11 @@ Random Forest Classifier, K-Nearest Neighbors (KNN), and Logistic Regression mod
 
 The impact of different resampling techniques on model performance is explored for each model (Random Forest Classifier, KNN, and Logistic Regression). Resampling techniques are used to address class imbalance in the dataset, where one class (low-risk of heart attack) is significantly more prevalent than the other class (high-risk of heart attack). 
 
-##### Data Splitting 
+##### Data Splitting (training, testing and new testing set)
 The data was split into training and testing sets using the `train_test_split` function from scikit-learn. Further splitting was performed on the testing set to create a new testing set using the same function. This ensured that the model was trained on one set of data and tested on another independent set, reducing the risk of overfitting and providing a more reliable evaluation of its performance.
 
 
-The resampling techniques considered are:
+##### The resampling techniques:
 
 
 1. **SMOTE (Synthetic Minority Over-sampling Technique)**: Generates synthetic samples for the minority class to balance the class distribution.

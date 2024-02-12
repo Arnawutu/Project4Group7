@@ -105,7 +105,14 @@ Random Forest Classifier, K-Nearest Neighbors (KNN), and Logistic Regression mod
 
 #### Model Training with Resampled Data
 
-The impact of different resampling techniques on model performance is explored for each model (Random Forest Classifier, KNN, and Logistic Regression). Resampling techniques are used to address class imbalance in the dataset, where one class (low-risk of heart attack) is significantly more prevalent than the other class (high-risk of heart attack). The resampling techniques considered are:
+The impact of different resampling techniques on model performance is explored for each model (Random Forest Classifier, KNN, and Logistic Regression). Resampling techniques are used to address class imbalance in the dataset, where one class (low-risk of heart attack) is significantly more prevalent than the other class (high-risk of heart attack). 
+
+##### Data Splitting 
+The data was split into training and testing sets using the `train_test_split` function from scikit-learn. Further splitting was performed on the testing set to create a new testing set using the same function. This ensured that the model was trained on one set of data and tested on another independent set, reducing the risk of overfitting and providing a more reliable evaluation of its performance.
+
+
+The resampling techniques considered are:
+
 
 1. **SMOTE (Synthetic Minority Over-sampling Technique)**: Generates synthetic samples for the minority class to balance the class distribution.
 
@@ -118,6 +125,11 @@ The impact of different resampling techniques on model performance is explored f
 5. **ClusterCentroids**: Under-samples the majority class by clustering the data points and keeping centroids of the clusters.
 
 For each resampling technique, the dataset is resampled, and each model (Random Forest Classifier, KNN, and Logistic Regression) is trained using the resampled data. The trained models are then evaluated using the same evaluation metrics as the models trained with the original data. This allows for a comparison of how different resampling techniques affect each model's ability to predict heart attack risk accurately.
+
+
+
+
+
 
 
 ### Best Model: Data Resampling with RandomOverSampler, Grid Search, and RandomForestClassifier

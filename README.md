@@ -58,6 +58,12 @@ Our project seeks to examine the data outlined above to help insurance companies
 - **traning_data.ipynb** This file documents our exploration of various machine-learning models for supervised  training on the dataset. We experimented with logistic regression, random forest models, KN means, and neural networks to enhance prediction accuracy. Through a combination of techniques, including data sampling with a random oversample, grid search, and employment of a random forest classifier, we achieved a prediction accuracy of 74%. This file contains the connection to the data base. 
 
 #### Endpoints
+1. **Deployment**
+   - URL: [http://heartattackriskpredictorv2.us-east-1.elasticbeanstalk.com/](http://heartattackriskpredictorv2.us-east-1.elasticbeanstalk.com/)
+   - Description: Displays the heart attack app for the user to input data.
+
+or 
+
 1. **Home Page**
    - URL: [http://localhost:5000/](http://localhost:5000/)
    - Description: Displays the heart attack app for the user to input data.

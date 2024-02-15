@@ -78,17 +78,14 @@ Our project seeks to examine the data outlined above to help insurance companies
 
 ### Data Analysis and Visualization
 
-- **visuals_trial.ipynb** This file presents our response to the research questions utilizing visualizations created with the Folium library and Plotly. Through these visualizations, we offer insights and analysis to address the research question effectively.
+- **visuals_trial.ipynb** and **more_Visualization.ipynb** These files present our response to the research questions utilizing visualizations created with the Folium library and Plotly. Through these visualizations, we offer insights and analysis to address the research question effectively.
 
 
 ### Data Analysis 
-**here we put the sesearchquesitons and analysis**
 
+- While the majority of the data collected aligns with expectations and demonstrates predictable patterns, certain unanticipated results have emerged due to key influence. Given that the data compilation spanned globally and accounted for numerous variable, it is conceivable that the sample size of 8,763 patients may not have been sufficiently large to encapsulate a definitive accuracy in the datas representation.
 
-
-
-
-
+- The analysis reveals that adequate sleep and medication compliance are linked to a lower incidence of heart attacks. Moreover, it’s observed that people adhering to exceptionally healthy diets often register a higher risk of heart attacks. This counterintuitive result could be related to a phenomenon known as the “health-conscious worker effect,” where individuals who are proactive about their health are more likely to get regular check-ups. Such vigilance may lead to a higher reported incidence of heart issues simply because their conditions are more likely to be diagnosed then those less health-conscious
 
 
 #### Model Training with Original Data
@@ -176,5 +173,11 @@ Ensure that you have the necessary Python libraries installed, including Pandas,
 4. Review the results and analysis provided to understand the predictive performance of the models and make informed decisions regarding heart attack risk prediction.
 
 
+### Data Sources
 
+**Heart Attack Risk Prediction Dataset**
+- URL[https://www.kaggle.com/datasets/iamsouravbanerjee/heart-attack-prediction-dataset](https://www.kaggle.com/datasets/iamsouravbanerjee/heart-attack-prediction-dataset)
+
+**Contries Now API**
+- URL [https://countriesnow.space/api/v0.1/countries/capital] (https://countriesnow.space/api/v0.1/countries/capital)
 
